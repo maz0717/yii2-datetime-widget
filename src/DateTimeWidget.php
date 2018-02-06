@@ -158,7 +158,7 @@ class DateTimeWidget extends InputWidget
         if ($this->hasModel()) {
             $content = Html::activeTextInput($this->model, $this->attribute, $this->options);
         } else {
-            $content = Html::textInput($this->name, $this->value, $this->options);
+            $content = Html::textInput($this->name, $this->options['value'], $this->options);
         }
         return $content;
     }
