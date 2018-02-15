@@ -60,6 +60,11 @@ class DateTimeWidget extends InputWidget
      * @link https://github.com/moment/moment/tree/develop/locale
      */
     public $locale;
+    /**
+     * @var yii\i18n\Formatter Formatter object
+     * Custom formatter object
+     */
+    public $formatter;
 
     /**
      * @var array
@@ -81,6 +86,9 @@ class DateTimeWidget extends InputWidget
     public function init()
     {
         parent::init();
+        if(!$this->formatter) {
+            $this->formatter = Yii::$app->formatter;
+        }
         $value = $this->hasModel() ? Html::getAttributeValue($this->model, $this->attribute) : $this->value;
         $this->momentDatetimeFormat = $this->momentDatetimeFormat ?: ArrayHelper::getValue(
             $this->getPhpMomentMappings(),
@@ -104,7 +112,7 @@ class DateTimeWidget extends InputWidget
         if ($value !== null && trim($value) !== '') {
             $this->options['value'] = array_key_exists('value', $this->options)
                 ? $this->options['value']
-                : Yii::$app->formatter->asDatetime($value, $this->phpDatetimeFormat);
+                : $this->formatter->asDatetime($value, $this->phpDatetimeFormat);
         }
 
         if (!isset($this->containerOptions['id'])) {
