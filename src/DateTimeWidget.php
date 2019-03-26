@@ -149,7 +149,7 @@ class DateTimeWidget extends InputWidget
         if ($this->showInputAddon) {
             Html::addCssClass($this->containerOptions, 'input-group');
         }
-        // Html::addCssStyle($this->containerOptions, 'position: relative');
+        Html::addCssStyle($this->containerOptions, 'position: relative');
         $content[] = Html::beginTag('div', $this->containerOptions);
 
         if ($this->showInputAddon && $this->showInputAddonStart) {
