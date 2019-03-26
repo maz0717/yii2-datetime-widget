@@ -17,7 +17,7 @@ class MomentTimezoneAsset extends AssetBundle
      * @var array
      */
     public $js = [
-        'builds/moment-timezone.min.js',
+        'builds/moment-timezone-with-data-2012-2022.min.js',
     ];
 
     /**
